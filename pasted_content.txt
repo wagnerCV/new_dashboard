@@ -1,0 +1,163 @@
+Your architecture plan for the Wedding Dashboard is **approved**. You understood the project very well and the proposed structure is exactly what I want. Please proceed to the implementation phase now, following your own phases (Database & Auth → Dashboard UI → Guest Management → Settings → Real-time & polish).
+
+Below are my answers to your clarification questions and some additional instructions:
+
+---
+
+## 1. Admin Setup (Bride & Groom Access)
+
+- We will **pre-create the admin accounts** in Supabase.
+- Please assume two admin users (bride and groom) will be inserted directly into the `admin_users` table via Supabase or SQL.
+- Implement **login only** (no public self-registration form for admins).
+- The dashboard must be **strictly private** for these admin users.
+
+You can assume a structure like:
+- `admin_users`:
+  - `id` (UUID, primary key)
+  - `auth_user_id` (UUID from Supabase auth.users)
+  - `role` (e.g. 'bride', 'groom', 'admin')
+  - `created_at`
+
+Make sure the `admin_users` table is linked properly with `auth.users`, and restrict dashboard access based on this.
+
+---
+
+## 2. Guest Export Format
+
+- Implement **CSV export** of the guest list.
+- Include at least the following columns (based on the existing RSVP data model):
+  - guest_id
+  - name
+  - email
+  - phone (if available)
+  - status (Confirmed / Pending / Declined)
+  - party_size / number_of_guests (if available)
+  - created_at
+
+Add an “Export CSV” button in the Guests Dashboard page.
+
+If you wish, you may structure the code so that adding PDF/Excel later will be easy, but for now **CSV is enough**.
+
+---
+
+## 3. Analytics / Charts
+
+Yes, I **do want analytics visualizations**, but keep them **simple and not over-engineered**.
+
+- Add a basic **Analytics section** inside the Guest Dashboard with:
+  - Total guests
+  - Confirmed guests
+  - Pending guests
+  - Declined guests
+  - Sum of total expected attendees (sum of party sizes for confirmed guests, if that field exists)
+
+Also include at least:
+- One bar chart or pie chart showing RSVP status distribution.
+
+Use a **lightweight React chart library** that fits well with the current stack and aesthetic (for example Recharts or a similar modern chart library). Keep styling consistent with the luxurious wedding design.
+
+No need to implement complex time-series analytics for now.
+
+---
+
+## 4. Notifications for New RSVPs
+
+To simplify the project, **do NOT implement notifications or email alerts for now**.
+
+- Do not implement email notifications.
+- Do not implement toggles or settings related to notifications.
+
+You may still keep the architecture clean so that notifications can be added in the future if needed, but for this version, **notifications are out of scope**.
+
+---
+
+## 5. Guest Fields
+
+To keep the system simple and focused, **do NOT add extra custom fields for guests beyond what is already defined in the existing RSVP system**.
+
+- Use only the fields that are already present in the current Supabase RSVP table (such as name, email, phone, status, number_of_guests, etc.).
+- Do not add new fields like `dietary_restrictions`, `message_to_couple`, `side`, or `category` unless they already exist in the current schema.
+
+The goal is to integrate the dashboard cleanly with the existing RSVP data without expanding the data model unnecessarily.
+
+---
+
+## 6. Invitation Settings Page – Details
+
+Your plan for a **tabbed Settings interface** is perfect. Please implement:
+
+Tabs such as:
+1. **General**
+   - Bride and groom names
+   - Wedding date, time, and venue
+   - RSVP deadline
+2. **Content**
+   - Main invitation message
+   - Secondary texts / manifesto
+   - Dress code
+3. **Media**
+   - Hero image URL
+   - Background theme option (e.g. ‘terracotta’, ‘emerald’, etc.) if relevant
+4. **Timeline**
+   - Editable story/cards for the couple’s journey
+5. **Social**
+   - Instagram, Facebook, TikTok, website / other social links
+
+Requirements:
+- Changes must be stored in an `event_settings` (or similar) table.
+- The **public invitation page** must read from these settings dynamically.
+- Implement **auto-save** where reasonable (or a clear “Save” button with feedback).
+- Include a **Live Preview panel** inside the Settings page if possible, mimicking how the changes will look on the actual public invitation.
+
+---
+
+## 7. Security & RLS
+
+Please fully implement the security model you described in your architecture:
+
+- **RLS policies**:
+  - Public read access to only the necessary invitation content and RSVP insert.
+  - Admin-only read/write access to `admin_users`, full guest data, and `event_settings`.
+- Secure protected routes:
+  - `/dashboard/login` (public)
+  - `/dashboard/guests` (protected)
+  - `/dashboard/settings` (protected)
+  - `/dashboard/profile` (protected)
+- Use `react` + `Supabase` best practices for:
+  - Session handling
+  - Logout
+  - Redirecting to login when unauthenticated
+- Keep all **Supabase secret keys** out of the frontend. Use only the public anon key where appropriate and rely on RLS.
+
+---
+
+## 8. Implementation Style
+
+Please now proceed with your implementation phases. For each phase:
+
+1. **Show me the code step-by-step**, with:
+   - Updated database schema (SQL for tables + RLS)
+   - Important TypeScript/Type definitions (if used)
+   - React components and pages
+   - Any hooks or utilities for Supabase, auth, or state management
+2. Ensure:
+   - Clean, modular file structure as you proposed
+   - Strong typing where applicable
+   - Reuse of existing design system (Tailwind, Radix, Framer Motion)
+   - Consistent luxury theme (Terracotta / Mediterranean minimalism)
+
+You do **not** need to ask for further confirmation between every tiny step. Use this message as a full green light to:
+
+- Implement the database layer,
+- Implement the dashboard UI and routing,
+- Implement guest management, analytics, export,
+- Implement settings and live preview,
+- Implement security and RLS,
+- Add reasonable polish.
+
+When you present code, please:
+- Clearly separate files and paths
+- Mention where each file should be located inside the existing project structure
+- Include any necessary configuration updates.
+
+You are an expert senior full-stack developer. Please start coding now based on everything above and on your original architecture document.
