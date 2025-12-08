@@ -5,23 +5,25 @@ import DashboardLogin from "./DashboardLogin";
 import DashboardGuests from "./DashboardGuests";
 import DashboardSettings from "./DashboardSettings";
 import DashboardProfile from "./DashboardProfile";
-import ProtectedRoute from "@/components/ProtectedRoute";
 import { DashboardAuthProvider, useDashboardAuth } from "@/contexts/DashboardAuthContext";
 
 function DashboardRouter() {
   const { user, loading } = useDashboardAuth();
-  const [, setLocation] = useLocation();
+  const [location, setLocation] = useLocation();
 
   useEffect(() => {
-    if (!loading && !user) {
+    if (!loading && !user && location !== "/dashboard/login") {
       setLocation("/dashboard/login");
     }
-  }, [user, loading, setLocation]);
+  }, [user, loading, location, setLocation]);
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center min-h-screen">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-terracotta-600"></div>
+      <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-terracotta-50 via-off-white to-sand-50">
+        <div className="flex flex-col items-center gap-4">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-terracotta-600"></div>
+          <p className="text-terracotta-600 font-medium">Loading...</p>
+        </div>
       </div>
     );
   }
@@ -39,7 +41,19 @@ function DashboardRouter() {
         {user ? <DashboardLayout><DashboardProfile /></DashboardLayout> : <DashboardLogin />}
       </Route>
       <Route path="/dashboard">
-        {user ? <DashboardLayout><DashboardGuests /></DashboardLayout> : <DashboardLogin />}
+        {user ? (
+          <DashboardLayout><DashboardGuests /></DashboardLayout>
+        ) : (
+          <DashboardLogin />
+        )}
+      </Route>
+      {/* Catch-all for invalid dashboard routes */}
+      <Route>
+        {user ? (
+          <DashboardLayout><DashboardGuests /></DashboardLayout>
+        ) : (
+          <DashboardLogin />
+        )}
       </Route>
     </Switch>
   );
