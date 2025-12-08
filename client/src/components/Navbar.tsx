@@ -2,10 +2,8 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useLocation } from "wouter";
 
 export default function Navbar() {
-  const [, setLocation] = useLocation();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -53,13 +51,6 @@ export default function Navbar() {
                 {link.name}
               </button>
             ))}
-            <div className="h-6 w-px bg-sand/30" />
-            <button
-              onClick={() => setLocation('/dashboard/login')}
-              className="text-sm font-serif uppercase tracking-widest text-terracotta hover:text-terracotta/70 transition-colors"
-            >
-              👑 Painel
-            </button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -100,16 +91,6 @@ export default function Navbar() {
                   {link.name}
                 </button>
               ))}
-              <div className="h-px w-12 bg-sand/30" />
-              <button
-                onClick={() => {
-                  setIsMobileMenuOpen(false);
-                  setLocation('/dashboard/login');
-                }}
-                className="text-2xl font-serif text-terracotta hover:text-terracotta/70 transition-colors"
-              >
-                👑 Painel dos Noivos
-              </button>
             </div>
           </motion.div>
         )}

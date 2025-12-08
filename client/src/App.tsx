@@ -6,13 +6,13 @@ import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import { RSVPProvider } from "./contexts/RSVPContext";
 import { EventProvider } from "./contexts/EventContext";
-import Dashboard from "./pages/Dashboard";
+import Home from "./pages/Home";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
   return (
     <Switch>
-      <Route path="/dashboard/*" component={Dashboard} />
+      <Route path={"/"} component={Home} />
       <Route path={"/404"} component={NotFound} />
       {/* Final fallback route */}
       <Route component={NotFound} />
