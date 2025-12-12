@@ -15,11 +15,11 @@
   --color-off-white: #FAF7F5;
   --color-soft-black: #0B0B0C;
 
-  /* FULL SAND PALETTE (Fix do erro) */
+  /* FULL SAND PALETTE */
   --color-sand-50:  #FAF4EC;
   --color-sand-100: #F1E5D6;
   --color-sand-200: #E8D6C0;
-  --color-sand-300: #D6BFA8;  /* cor original */
+  --color-sand-300: #D6BFA8;
   --color-sand-400: #C4A88F;
   --color-sand-500: #A98E75;
   --color-sand-600: #856D58;
@@ -27,7 +27,6 @@
   --color-sand-800: #3C2E24;
   --color-sand-900: #1F1710;
 
-  /* REQUIRED by your components */
   --color-sand: var(--color-sand-300);
 
   --radius-sm: calc(var(--radius) - 4px);
@@ -155,7 +154,7 @@
 
 @layer base {
   * {
-    @apply border-border outline-ring/50;
+    @apply border-border outline-ring outline-opacity-50;
   }
   body {
     @apply bg-background text-foreground;
