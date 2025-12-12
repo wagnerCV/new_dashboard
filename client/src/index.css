@@ -85,7 +85,7 @@
   --secondary: var(--color-sand);
   --secondary-foreground: var(--color-soft-black);
 
-  --muted: #E5DCD3; /* Slightly darker sand for muted backgrounds */
+  --muted: #E5DCD3;
   --muted-foreground: #6B5D52;
 
   --accent: var(--color-sand);
@@ -110,7 +110,7 @@
   --background: var(--color-soft-black);
   --foreground: var(--color-off-white);
 
-  --card: #1A1A1C; /* Slightly lighter black for cards */
+  --card: #1A1A1C;
   --card-foreground: var(--color-off-white);
 
   --popover: #1A1A1C;
@@ -165,11 +165,11 @@
 @layer components {
   /* Dashboard Card Styling */
   .dashboard-card {
-    @apply bg-card rounded-xl shadow-sm border border-sand-200/50 hover:shadow-md transition-all duration-200;
+    @apply bg-card rounded-xl shadow-sm border border-sand-200 hover:shadow-md transition-all duration-200;
   }
 
   .dashboard-card-header {
-    @apply px-6 py-4 border-b border-sand-200/50;
+    @apply px-6 py-4 border-b border-sand-200;
   }
 
   .dashboard-card-content {
@@ -178,7 +178,7 @@
 
   /* Dashboard Stat Card */
   .stat-card {
-    @apply bg-gradient-to-br from-white to-sand-50 rounded-lg shadow-sm border border-sand-200/50 p-6 hover:shadow-md transition-all duration-200;
+    @apply bg-gradient-to-br from-white to-sand-50 rounded-lg shadow-sm border border-sand-200 p-6 hover:shadow-md transition-all duration-200;
   }
 
   .stat-card-label {
@@ -251,22 +251,12 @@
 
   /**
    * Custom container utility that centers content and adds responsive padding.
-   *
-   * This overrides Tailwind's default container behavior to:
-   * - Auto-center content (mx-auto)
-   * - Add responsive horizontal padding
-   * - Set max-width for large screens
-   *
-   * Usage: <div className="container">...</div>
-   *
-   * For custom widths, use max-w-* utilities directly:
-   * <div className="max-w-6xl mx-auto px-4">...</div>
    */
   .container {
     width: 100%;
     margin-left: auto;
     margin-right: auto;
-    padding-left: 1rem; /* 16px - mobile padding */
+    padding-left: 1rem;
     padding-right: 1rem;
   }
 
@@ -277,16 +267,16 @@
 
   @media (min-width: 640px) {
     .container {
-      padding-left: 1.5rem; /* 24px - tablet padding */
+      padding-left: 1.5rem;
       padding-right: 1.5rem;
     }
   }
 
   @media (min-width: 1024px) {
     .container {
-      padding-left: 2rem; /* 32px - desktop padding */
+      padding-left: 2rem;
       padding-right: 2rem;
-      max-width: 1280px; /* Standard content width */
+      max-width: 1280px;
     }
   }
 }
