@@ -33,7 +33,7 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
         } bg-gradient-to-b from-terracotta-800 to-terracotta-900 text-white transition-all duration-300 flex flex-col shadow-xl`}
       >
         {/* Logo */}
-        <div className="p-6 border-b border-terracotta-700/50 flex items-center justify-between">
+        <div className="p-6 border-b border-terracotta-700 flex items-center justify-between">
           <h1 className={`font-playfair font-bold text-2xl ${sidebarOpen ? "block" : "hidden"}`}>
             💍
           </h1>
@@ -68,9 +68,9 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
         </nav>
 
         {/* User Info & Logout */}
-        <div className="p-4 border-t border-terracotta-700/50 space-y-3">
+        <div className="p-4 border-t border-terracotta-700 space-y-3">
           {sidebarOpen && (
-            <div className="text-sm bg-terracotta-700/30 rounded-lg p-3">
+            <div className="text-sm bg-terracotta-700 rounded-lg p-3">
               <p className="text-terracotta-200 text-xs uppercase tracking-wide">Logged in as</p>
               <p className="font-medium truncate text-white">{user?.email}</p>
             </div>
@@ -88,7 +88,7 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
       {/* Main Content */}
       <div className="flex-1 flex flex-col overflow-hidden">
         {/* Header */}
-        <header className="bg-white/80 backdrop-blur-sm border-b border-sand-200/50 px-8 py-5 shadow-sm">
+        <header className="bg-white border-b border-sand-200 px-8 py-5 shadow-sm">
           <div className="flex items-center justify-between">
             <div>
               <h2 className="text-3xl font-playfair text-terracotta-900 font-bold">Wedding Dashboard</h2>
@@ -98,7 +98,7 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
               href="/"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 px-5 py-3 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white rounded-lg hover:from-emerald-600 hover:to-emerald-700 transition-all duration-200 shadow-md hover:shadow-lg font-medium"
+              className="flex items-center gap-2 px-5 py-3 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg transition-all duration-200 shadow-md hover:shadow-lg font-medium"
             >
               <Home size={18} />
               View Invitation
