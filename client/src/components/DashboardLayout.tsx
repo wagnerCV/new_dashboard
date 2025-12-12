@@ -25,21 +25,21 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
   ];
 
   return (
-    <div className="flex h-screen bg-off-white">
+    <div className="flex h-screen bg-gradient-to-br from-sand-50 via-off-white to-sand-100">
       {/* Sidebar */}
       <div
         className={`${
           sidebarOpen ? "w-64" : "w-20"
-        } bg-terracotta-900 text-white transition-all duration-300 flex flex-col`}
+        } bg-gradient-to-b from-terracotta-800 to-terracotta-900 text-white transition-all duration-300 flex flex-col shadow-xl`}
       >
         {/* Logo */}
-        <div className="p-4 border-b border-terracotta-800 flex items-center justify-between">
-          <h1 className={`font-playfair font-bold ${sidebarOpen ? "text-xl" : "hidden"}`}>
-            Wedding
+        <div className="p-6 border-b border-terracotta-700/50 flex items-center justify-between">
+          <h1 className={`font-playfair font-bold text-2xl ${sidebarOpen ? "block" : "hidden"}`}>
+            💍
           </h1>
           <button
             onClick={() => setSidebarOpen(!sidebarOpen)}
-            className="p-1 hover:bg-terracotta-800 rounded"
+            className="p-2 hover:bg-terracotta-700 rounded-lg transition-colors"
           >
             {sidebarOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
@@ -54,30 +54,30 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
               <button
                 key={item.href}
                 onClick={() => setLocation(item.href)}
-                className={`w-full flex items-center gap-3 px-4 py-2 rounded-lg transition-colors ${
+                className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200 ${
                   isActive
-                    ? "bg-terracotta-700 text-white"
-                    : "text-terracotta-100 hover:bg-terracotta-800"
+                    ? "bg-terracotta-600 text-white shadow-lg scale-105"
+                    : "text-terracotta-100 hover:bg-terracotta-700/60 hover:text-white"
                 }`}
               >
                 <Icon size={20} />
-                {sidebarOpen && <span>{item.label}</span>}
+                {sidebarOpen && <span className="font-medium">{item.label}</span>}
               </button>
             );
           })}
         </nav>
 
         {/* User Info & Logout */}
-        <div className="p-4 border-t border-terracotta-800 space-y-3">
+        <div className="p-4 border-t border-terracotta-700/50 space-y-3">
           {sidebarOpen && (
-            <div className="text-sm">
-              <p className="text-terracotta-200">Logged in as</p>
-              <p className="font-medium truncate">{user?.email}</p>
+            <div className="text-sm bg-terracotta-700/30 rounded-lg p-3">
+              <p className="text-terracotta-200 text-xs uppercase tracking-wide">Logged in as</p>
+              <p className="font-medium truncate text-white">{user?.email}</p>
             </div>
           )}
           <Button
             onClick={handleLogout}
-            className="w-full bg-burgundy-600 hover:bg-burgundy-700 text-white flex items-center justify-center gap-2"
+            className="w-full bg-burgundy-600 hover:bg-burgundy-700 text-white flex items-center justify-center gap-2 transition-all duration-200"
           >
             <LogOut size={18} />
             {sidebarOpen && "Sign Out"}
@@ -88,14 +88,17 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
       {/* Main Content */}
       <div className="flex-1 flex flex-col overflow-hidden">
         {/* Header */}
-        <header className="bg-white border-b border-sand-200 px-6 py-4 shadow-sm">
+        <header className="bg-white/80 backdrop-blur-sm border-b border-sand-200/50 px-8 py-5 shadow-sm">
           <div className="flex items-center justify-between">
-            <h2 className="text-2xl font-playfair text-terracotta-900">Dashboard</h2>
+            <div>
+              <h2 className="text-3xl font-playfair text-terracotta-900 font-bold">Wedding Dashboard</h2>
+              <p className="text-sand-600 text-sm mt-1">Manage your special day</p>
+            </div>
             <a
               href="/"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 px-4 py-2 bg-emerald-100 text-emerald-700 rounded-lg hover:bg-emerald-200 transition-colors"
+              className="flex items-center gap-2 px-5 py-3 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white rounded-lg hover:from-emerald-600 hover:to-emerald-700 transition-all duration-200 shadow-md hover:shadow-lg font-medium"
             >
               <Home size={18} />
               View Invitation
@@ -104,8 +107,8 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
         </header>
 
         {/* Content */}
-        <main className="flex-1 overflow-auto p-6">
-          <div className="max-w-6xl mx-auto">{children}</div>
+        <main className="flex-1 overflow-auto p-8">
+          <div className="max-w-7xl mx-auto">{children}</div>
         </main>
       </div>
     </div>
