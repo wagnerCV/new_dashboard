@@ -6,161 +6,21 @@
 @theme inline {
   --font-serif: "Playfair Display", serif;
   --font-sans: "Inter", sans-serif;
-
-  --color-terracotta: #B45309;
-  --color-emerald: #0F766E;
-  --color-burgundy: #7C1D2F;
-  --color-burnt-orange: #B45309;
-  --color-amber: #F59E0B;
-  --color-off-white: #FAF7F5;
-  --color-soft-black: #0B0B0C;
-
-  /* FULL SAND PALETTE */
-  --color-sand-50:  #FAF4EC;
-  --color-sand-100: #F1E5D6;
-  --color-sand-200: #E8D6C0;
-  --color-sand-300: #D6BFA8;
-  --color-sand-400: #C4A88F;
-  --color-sand-500: #A98E75;
-  --color-sand-600: #856D58;
-  --color-sand-700: #5F4C3C;
-  --color-sand-800: #3C2E24;
-  --color-sand-900: #1F1710;
-
-  --color-sand: var(--color-sand-300);
-
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
-
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-
-  --color-card: var(--card);
-  --color-card-foreground: var(--card-foreground);
-
-  --color-popover: var(--popover);
-  --color-popover-foreground: var(--popover-foreground);
-
-  --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
-
-  --color-secondary: var(--secondary);
-  --color-secondary-foreground: var(--secondary-foreground);
-
-  --color-muted: var(--muted);
-  --color-muted-foreground: var(--muted-foreground);
-
-  --color-accent: var(--accent);
-  --color-accent-foreground: var(--accent-foreground);
-
-  --color-destructive: var(--destructive);
-  --color-destructive-foreground: var(--destructive-foreground);
-
-  --color-border: var(--border);
-  --color-input: var(--input);
-  --color-ring: var(--ring);
-
-  --color-chart-1: var(--chart-1);
-  --color-chart-2: var(--chart-2);
-  --color-chart-3: var(--chart-3);
-  --color-chart-4: var(--chart-4);
-  --color-chart-5: var(--chart-5);
-
-  --color-sidebar: var(--sidebar);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-ring: var(--sidebar-ring);
 }
 
 :root {
   --radius: 0.5rem;
-
-  --background: var(--color-off-white);
-  --foreground: var(--color-soft-black);
-
-  --card: white;
-  --card-foreground: var(--color-soft-black);
-
-  --popover: var(--color-off-white);
-  --popover-foreground: var(--color-soft-black);
-
-  --primary: var(--color-terracotta);
-  --primary-foreground: var(--color-off-white);
-
-  --secondary: var(--color-sand-300);
-  --secondary-foreground: var(--color-soft-black);
-
-  --muted: #E5DCD3;
-  --muted-foreground: #6B5D52;
-
-  --accent: var(--color-sand-300);
-  --accent-foreground: var(--color-soft-black);
-
-  --destructive: var(--color-burgundy);
-  --destructive-foreground: var(--color-off-white);
-
-  --border: var(--color-sand-200);
-  --input: white;
-  --ring: var(--color-terracotta);
-
-  --chart-1: var(--color-terracotta);
-  --chart-2: var(--color-emerald);
-  --chart-3: var(--color-burgundy);
-  --chart-4: var(--color-amber);
-  --chart-5: var(--color-sand-300);
-}
-
-.dark {
-  --background: var(--color-soft-black);
-  --foreground: var(--color-off-white);
-
-  --card: #1A1A1C;
-  --card-foreground: var(--color-off-white);
-
-  --popover: #1A1A1C;
-  --popover-foreground: var(--color-off-white);
-
-  --primary: var(--color-terracotta);
-  --primary-foreground: var(--color-off-white);
-
-  --secondary: #2A2A2D;
-  --secondary-foreground: var(--color-off-white);
-
-  --muted: #2A2A2D;
-  --muted-foreground: #A1A1AA;
-
-  --accent: #2A2A2D;
-  --accent-foreground: var(--color-off-white);
-
-  --destructive: var(--color-burgundy);
-  --destructive-foreground: var(--color-off-white);
-
-  --border: #2A2A2D;
-  --input: #2A2A2D;
-  --ring: var(--color-terracotta);
-
-  --chart-1: var(--color-terracotta);
-  --chart-2: var(--color-emerald);
-  --chart-3: var(--color-burgundy);
-  --chart-4: var(--color-amber);
-  --chart-5: var(--color-sand-300);
 }
 
 @layer base {
   * {
-    @apply border-border outline-ring outline-opacity-50;
+    @apply border-border outline-ring/50;
   }
   body {
     @apply bg-background text-foreground;
   }
   button:not(:disabled),
-  [role="button"]:not([aria-disabled="true"]]),
+  [role="button"]:not([aria-disabled="true"]),
   [type="button"]:not(:disabled),
   [type="submit"]:not(:disabled),
   [type="reset"]:not(:disabled),
@@ -173,86 +33,6 @@
 }
 
 @layer components {
-  .dashboard-card {
-    @apply bg-card rounded-xl shadow-sm border border-sand-200 hover:shadow-md transition-all duration-200;
-  }
-
-  .dashboard-card-header {
-    @apply px-6 py-4 border-b border-sand-200;
-  }
-
-  .dashboard-card-content {
-    @apply px-6 py-4;
-  }
-
-  .stat-card {
-    @apply bg-gradient-to-br from-white to-sand-50 rounded-lg shadow-sm border border-sand-200 p-6 hover:shadow-md transition-all duration-200;
-  }
-
-  .stat-card-label {
-    @apply text-sm font-medium text-sand-600 uppercase tracking-wide;
-  }
-
-  .stat-card-value {
-    @apply text-3xl font-bold text-terracotta-900 mt-2;
-  }
-
-  .dashboard-input {
-    @apply w-full px-4 py-2 bg-white border border-sand-200 rounded-lg text-foreground placeholder-sand-400 focus:outline-none focus:ring-2 focus:ring-terracotta-500 focus:border-transparent transition-all duration-200;
-  }
-
-  .dashboard-input:focus {
-    @apply ring-2 ring-terracotta-500 border-transparent;
-  }
-
-  .dashboard-button {
-    @apply px-4 py-2 rounded-lg font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2;
-  }
-
-  .dashboard-button-primary {
-    @apply bg-terracotta-600 hover:bg-terracotta-700 text-white focus:ring-terracotta-500;
-  }
-
-  .dashboard-button-secondary {
-    @apply bg-sand-200 hover:bg-sand-300 text-soft-black focus:ring-sand-500;
-  }
-
-  .dashboard-table {
-    @apply w-full text-sm;
-  }
-
-  .dashboard-table thead {
-    @apply bg-sand-50 border-b border-sand-200;
-  }
-
-  .dashboard-table th {
-    @apply px-4 py-3 text-left font-semibold text-soft-black;
-  }
-
-  .dashboard-table td {
-    @apply px-4 py-3 border-b border-sand-100;
-  }
-
-  .dashboard-table tbody tr {
-    @apply hover:bg-sand-50 transition-colors duration-150;
-  }
-
-  .status-badge {
-    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-medium;
-  }
-
-  .status-confirmed {
-    @apply bg-emerald-100 text-emerald-700;
-  }
-
-  .status-maybe {
-    @apply bg-amber-100 text-amber-700;
-  }
-
-  .status-declined {
-    @apply bg-burgundy-100 text-burgundy-700;
-  }
-
   .container {
     width: 100%;
     margin-left: auto;
