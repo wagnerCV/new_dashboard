@@ -31,10 +31,10 @@ export default function DashboardLogin() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-terracotta-50 via-off-white to-sand-50 flex items-center justify-center p-4">
-      <Card className="w-full max-w-md border-terracotta-200 shadow-lg">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-gray-50 flex items-center justify-center p-4">
+      <Card className="w-full max-w-md border-gray-200 shadow-lg">
         <CardHeader className="space-y-2 text-center">
-          <CardTitle className="text-3xl font-playfair text-terracotta-900">
+          <CardTitle className="text-3xl font-playfair text-gray-900">
             Wedding Dashboard
           </CardTitle>
           <CardDescription className="text-base">
@@ -44,13 +44,13 @@ export default function DashboardLogin() {
         <CardContent>
           <form onSubmit={handleLogin} className="space-y-4">
             {error && (
-              <Alert className="bg-burgundy-50 border-burgundy-200 text-burgundy-900">
+              <Alert className="bg-red-50 border-red-200 text-red-900">
                 <AlertDescription>{error}</AlertDescription>
               </Alert>
             )}
 
             <div className="space-y-2">
-              <label htmlFor="email" className="text-sm font-medium text-soft-black">
+              <label htmlFor="email" className="text-sm font-medium text-gray-900">
                 Email
               </label>
               <Input
@@ -60,12 +60,12 @@ export default function DashboardLogin() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                className="border-terracotta-200 focus:border-terracotta-500 focus:ring-terracotta-500"
+                className="border-gray-300 focus:border-blue-500 focus:ring-blue-500"
               />
             </div>
 
             <div className="space-y-2">
-              <label htmlFor="password" className="text-sm font-medium text-soft-black">
+              <label htmlFor="password" className="text-sm font-medium text-gray-900">
                 Password
               </label>
               <div className="relative">
@@ -76,12 +76,12 @@ export default function DashboardLogin() {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   required
-                  className="border-terracotta-200 focus:border-terracotta-500 focus:ring-terracotta-500 pr-10"
+                  className="border-gray-300 focus:border-blue-500 focus:ring-blue-500 pr-10"
                 />
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-sand-600 hover:text-terracotta-600"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-600 hover:text-blue-600"
                 >
                   {showPassword ? "Hide" : "Show"}
                 </button>
@@ -91,13 +91,13 @@ export default function DashboardLogin() {
             <Button
               type="submit"
               disabled={loading}
-              className="w-full bg-terracotta-600 hover:bg-terracotta-700 text-white font-medium py-2 rounded-lg transition-colors"
+              className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 rounded-lg transition-colors"
             >
               {loading ? "Signing in..." : "Sign In"}
             </Button>
           </form>
 
-          <p className="mt-4 text-center text-sm text-sand-600">
+          <p className="mt-4 text-center text-sm text-gray-600">
             Only the bride and groom can access this dashboard.
           </p>
         </CardContent>
