@@ -446,12 +446,21 @@ export default function DashboardSettings() {
           )}
 
           <Button
-            onClick={handleSave}
-            disabled={saving}
-            className="bg-terracotta-600 hover:bg-terracotta-700 text-white font-medium w-full disabled:opacity-50 disabled:cursor-not-allowed"
-          >
-            {saving ? "Saving..." : "Save Changes"}
-          </Button>
+  onClick={handleSave}
+  disabled={saving}
+  className="
+    w-full
+    bg-blue-600
+    hover:bg-blue-700
+    text-white
+    font-medium
+    disabled:bg-blue-400
+    disabled:opacity-70
+  "
+>
+  {saving ? "Saving..." : "Save Changes"}
+</Button>
+
         </CardContent>
       </Card>
     </div>
