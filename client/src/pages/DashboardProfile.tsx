@@ -75,14 +75,19 @@ export default function DashboardProfile() {
             >
               Invitation Settings
             </a>
-            <a
-              href="/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block px-4 py-2 rounded-lg bg-emerald-50 hover:bg-emerald-100 text-emerald-900 font-medium transition-colors"
-            >
-              View Invitation
-            </a>
+            <button
+  onClick={() => {
+    window.open(
+      "https://invitation-new-zeta.vercel.app/",
+      "_blank",
+      "noopener,noreferrer"
+    );
+  }}
+  className="block px-4 py-2 rounded-lg bg-emerald-50 hover:bg-emerald-100 text-emerald-900 font-medium transition-colors"
+>
+  <Home size={18} />
+  View Invitation
+</button>
           </CardContent>
         </Card>
       </div>
