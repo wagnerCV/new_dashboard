@@ -94,15 +94,20 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
               <h2 className="text-3xl font-playfair text-gray-900 font-bold">Wedding Dashboard</h2>
               <p className="text-gray-600 text-sm mt-1">Manage your special day</p>
             </div>
-            <a
-              href="https://invitation-new-zeta.vercel.app/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 px-5 py-3 bg-green-600 hover:bg-green-700 text-white rounded-lg transition-all duration-200 shadow-md hover:shadow-lg font-medium"
-            >
-              <Home size={18} />
-              View Invitation
-            </a>
+            <button
+  onClick={() => {
+    window.open(
+      "https://invitation-new-zeta.vercel.app/",
+      "_blank",
+      "noopener,noreferrer"
+    );
+  }}
+  className="flex items-center gap-2 px-5 py-3 bg-green-600 hover:bg-green-700 text-white rounded-lg transition-all duration-200 shadow-md hover:shadow-lg font-medium"
+>
+  <Home size={18} />
+  View Invitation
+</button>
+
           </div>
         </header>
 
