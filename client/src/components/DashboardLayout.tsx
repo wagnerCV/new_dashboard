@@ -95,7 +95,7 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
               <p className="text-gray-600 text-sm mt-1">Manage your special day</p>
             </div>
             <a
-              href="/https://invitation-new-zeta.vercel.app/"
+              href="https://invitation-new-zeta.vercel.app/"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 px-5 py-3 bg-green-600 hover:bg-green-700 text-white rounded-lg transition-all duration-200 shadow-md hover:shadow-lg font-medium"
